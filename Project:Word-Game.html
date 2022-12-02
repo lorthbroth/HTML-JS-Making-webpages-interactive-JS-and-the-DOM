@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Word game </title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            form {
+                font-size: 1.5em;
+            }
+            .scrambled, input, button {
+                font-family: monospace;
+                font-size: 2em;
+            }
+            
+            .ans-wrong{
+                color: red;
+            }
+            
+            .ans-right {
+                color: green;
+            }
+            
+        </style>
+    </head>
+    <body>
+    
+    <h1>Word game!</h1>
+    <div id="game-one">
+    <form id="joke-form">
+        <label>
+            Unscramble these letters to form a word:<Br>
+            <span class="scrambled">REYJUQ</span>
+            <br>
+            <input type="text" size="10">
+        </label>
+        <button type="submit">Check</button>
+    </form>
+    </div>
+    
+    <div id="game-two">
+    <form id="joke-form2">
+        <label>
+            <span class="scrambled">DMNIICO</span>
+            <br>
+            <input type="text" size="10">
+        </label>
+        <button type="submit">Check</button>
+    </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        // when the user submits the form,
+        $("#joke-form").on("submit", function(event){
+            
+            //we stop the default
+            event.preventDefault();
+            
+            //   check that their answer is correct
+            var $answer = $(this).find("[type = text]");
+            $answer = $answer.val();
+            
+            if($answer === "JQUERY"){
+                 $("<p>").text("you are right").appendTo("#game-one").addClass("ans-right");
+            }else{
+                 $("<p>").text("you are wrong").appendTo("#game-one").addClass("ans-wrong");
+            }
+            
+        });
+        
+        // game two
+        $("#joke-form2").on("submit", function(event){
+            
+            //we stop the default
+            event.preventDefault();
+            
+            //   check that their answer is correct
+            var $answer = $(this).find("[type = text]");
+            $answer = $answer.val();
+            
+            if($answer === "DOMINIC"){
+                 $("<p>").text("you are right").appendTo("#game-two").addClass("ans-right");
+            }else{
+                 $("<p>").text("you are wrong").appendTo("#game-two").addClass("ans-wrong");
+            }
+            
+        });
+        
+        //   and show them appropriate message
+       
+    </script>
+    </body>
+</html>
